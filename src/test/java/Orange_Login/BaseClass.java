@@ -18,11 +18,12 @@ public class BaseClass {
 
 
     @BeforeMethod
-    @Parameters(value = {"browser"})
-    public void open_browser(String browser) throws InterruptedException {
-        browsersc=browser;
+    public void open_browser() throws InterruptedException {
+        //browsersc=browser;
+        String x = System.getProperty("browser");
+        if(x.equals("Chrome")) {
 
-        if(browser.equals("Chrome")) {
+
             //Driver Configuration
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -34,7 +35,7 @@ public class BaseClass {
             getDriver().manage().window().maximize();
             Thread.sleep(1000);
         }
-        else if (browser.equals("Firefox")) {
+        else if (x.equals("Firefox")) {
             //Driver Configuration
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();

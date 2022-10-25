@@ -108,6 +108,12 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M7</version>
           <configuration>
+            <systemPropertyVariables combine.children="append">
+              <property>
+                <name>browser</name>
+                <value>${project.build.outputDirectory}</value>
+              </property>
+            </systemPropertyVariables>
             <suiteXmlFiles>
               <suiteXmlFile>Regression_Driver.xml</suiteXmlFile>
             </suiteXmlFiles>
